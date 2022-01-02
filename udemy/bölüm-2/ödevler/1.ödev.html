@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="exercies">
+        <p>VueJS Muazzam bir Framwork - {{ name }} {{ age }}</p>
+        <p>{{ age*5 }}</p>
+        <p>{{ randomNumber () }}</p>
+        <div>
+            <input type="text" v-bind:value="name"/>
+        </div>
+        <img v-bind:src="image" alt="bayrak" >
+    </div>
+
+</body>
+<script>
+    new Vue({
+        el:"#exercies",
+        data:{
+            name: "Gökhan",
+            age:30,
+            image:"http://www.turkbayrak.com.tr/imajlar/ilanresim/71V00-eyup-120x180-turk-bayragi-fiyati-15930.png"
+
+        },
+        methods: {
+            randomNumber  :function(){
+                return Math.random()*1
+            }
+        },
+
+    });
+</script>
+
+</html>

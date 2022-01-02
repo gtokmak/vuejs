@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"> 
+        <button v-on:click="showAlert">Alert Göster</button>
+        <button v-on:click="counter++">Arttır</button>
+        <button v-on:click="increaseCounter">Arttır</button>
+        <p> {{ counter }} </p>
+        <p v-on:mousemove="updateCoords">koordinatlar: {{x}}, {{y}} <span v-on:mousemove.stop>Gizli bölme</span></p>
+
+        <button v-on:click="showAlertMessage('gokhan')">Alert Göster</button>
+        <button v-on:click="showAlertMessageEvent('gokhan',$event)">Alert Göster</button>
+    </div>
+
+    <script>
+        new Vue({
+            el :"#app",
+            data: {
+                    counter : 0,
+                    x : 0,
+                    y : 0,
+            },
+            methods: {
+                showAlert: function(){
+                    alert();
+                },
+                increaseCounter:function(){
+                 this.counter++;
+                },
+                updateCoords:function(event){
+                    this.x =event.clientX;
+                    this.y =event.clientY;
+                },
+                showAlertMessage: function(par){
+                    alert(par);
+                },
+                showAlertMessageEvent: function(par, event){
+                    alert(par);
+                    alert(event);
+                },
+            },
+        });
+    </script>
+</body>
+</html>

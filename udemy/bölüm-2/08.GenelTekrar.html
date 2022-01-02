@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <h1> {{ title }} </h1>
+        <p> {{count}} </p>
+        <button v-on:click="count++"> Arttır </button>
+        <button v-on:click="count--"> Azalt </button> <br>
+        <button v-on:click="arttir"> Arttır </button>
+        <button v-on:click="azalt"> Azalt </button><br>
+        <div v-html="url"></div> <br>
+        <p> {{ title2 }}</p>
+        <p v-once> {{ title2 }}</p>
+        <p> {{ merhaba()}}</p>
+        <p v-once> {{ title2 }}</p>
+        
+        <input type="text"  v-bind:value="deger">
+        
+        <div> <span v-on:mousemove="koordinatlar"> <p> koordinat: {{x}}, {{y}} </p></span></div>
+        <div> 
+            <input type="text" v-model="icerik"> 
+            <p style="border: 6px;border-style: double; color: darkgoldenrod;"> {{ icerik }} </p>
+        </div>
+
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                title:"Genel Tekrar-1",
+                count: 0,
+                url:"<a href='https://github.com/gtokmak' target='_blank'>gtokmak github hesabı</a>",
+                title2: "Merhaba Dunya",
+                deger:"Gökhan",
+                x: 0,
+                y:0,
+                icerik:""
+            },
+            methods: {
+                arttir:function(){
+                    console.log("Arttır metodu çalıştı")
+                    this.count++;
+                },
+                azalt:function(){
+                    console.log("Azalt metodu çalıştı")
+                    this.count--;
+                },
+                merhaba:function(){
+                    console.log("merhaba metodu çalıştı")
+                    return this.title2="Hoş Geldiniz..."
+                },
+                koordinatlar:function(){
+                    this.x = event.clientX;
+                    this.y = event.clientY;
+                }
+            },
+
+        });
+    </script>
+</body>
+</html>
