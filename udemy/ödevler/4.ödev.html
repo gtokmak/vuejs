@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="exercise">
+        <div>
+            <button @click="show = !show">Toggle</button>
+
+            <p v-if="show">Beni görebiliyor musun? </p>
+            <p v-else>Ya da beni görebiliyor musun?</p>
+
+            <p v-show="show">Beni görebiliyor musun? </p>
+            <p v-show="!show">Ya da beni görebiliyor musun?</p>
+
+        </div>
+
+        <ul>
+            <li v-for="value, index in array"> {{index}}-{{value}}</li>
+        </ul>
+
+        <ul>
+            <li v-for="value, key, index in customObject">{{index}} - {{key}} : {{value}}</li>
+        </ul>
+
+        <ul>
+            <li v-for="value, key, index in testData" v-if="index != 2">{{index}} - {{key}} : {{value}}</li>
+            <li v-for="value, key, index in testData" v-if="index == 2">
+                <ul>
+                    <li v-for="item in value">{{item}}</li>
+                </ul>
+            </li>
+        </ul>
+
+        <ul>
+            <li v-for="value in testData">
+                <template v-if="Array.isArray(value)"> 
+                    <div v-for="item in value"> {‌{ item }}</div>
+                </template>		
+                <template v-else>
+                    {‌{ value }}..
+                </template>				
+            </li>
+        </ul>
+
+    </div>
+    
+    <script>
+        new Vue({
+            el:"#exercise",
+            data:{
+                show : true,
+                array:['Gökhan', 'Defne', 'Berk', 'Özge'],
+                customObject: {
+                    title:"Game of Thrones",
+                    author:"George R.R",
+                    books:"7"
+                },
+    testData: {
+      name: 'NesnedLoop', 
+      id: 10,
+      data: [3,45,19,14.02, 20.30, 20.18]
+    }
+
+            }
+        });
+    </script>
+</body>
+</html>
