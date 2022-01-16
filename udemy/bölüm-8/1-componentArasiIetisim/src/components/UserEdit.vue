@@ -2,9 +2,34 @@
   <div class="col-md-s6">
     <h3>Child Component 2</h3>
     <p>Ben User.vue isimli Parent Component'in içerisindeki bir diğer Child componentim</p>
+    <p> Kullanıcı Yaşı: {{ age }} </p>
+    <button @click="changeAge">Kullanıcı Yaşı Değiştir.</button>
+    
   </div>
 </template>
-<script></script>
+
+<script>
+
+import {eventBus} from "../main"
+
+export default {
+  props : ["age"],
+  data() {
+    return {
+      age : 25
+    }
+  },
+  methods: {
+    changeAge(){
+      this.age = 30
+      //this.$emit("ageWasEdited", this.age);
+     // eventBus.$emit("ageWasEdited", this.age);
+     eventBus.changeAge(this.age)
+    }
+  },
+} 
+
+</script>
 
 <style scoped>
   div {

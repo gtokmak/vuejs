@@ -2,10 +2,14 @@
   <div class="container">
     <h1>Parent Component (User)</h1>
     <p>Burası parent component yani herşeyin import edildiği component :)</p>
+    <button @click="changeName">Adı Değiştir</button>
+    <p><strong>{{title}}</strong></p>
+    <p>Child Component Üzerinden Gelen Veri {{ childData }} </p>
+    <p> Kullanıcı yaşı: {{age}} </p>
     <hr>
     <div class="row">
-      <app-user-detail></app-user-detail>
-      <app-user-edit></app-user-edit>
+      <app-user-detail :age="age" @data="childData=$event" :name="title"></app-user-detail>
+      <app-user-edit @ageWasEdited="age=$event" :age="age"></app-user-edit>
     </div>
   </div>
 </template>
@@ -16,7 +20,19 @@
     components : {
       appUserDetail : UserDetail,
       appUserEdit : UserEdit,
-    }
+    },
+    data() {
+      return {
+        title:"Gokhan",
+        childData:"",
+        age : 25
+      }
+    },
+    methods: {
+      changeName(){
+        this.title = "Aylin"
+      }
+    },
   }
 </script>
 
